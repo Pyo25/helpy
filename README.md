@@ -114,6 +114,18 @@ Docker is the recommended way to quickly test or run Helpy in production.
 3) Edit `docker/Caddyfile` to include your URL or turn on SSL
 4) Run `docker-compose up -d` to start all of the services
 
+**Install Helpy on Heroku**
+
+The following steps are based on [Getting Started with Rails 4.x on Heroku](https://devcenter.heroku.com/articles/getting-started-with-rails4).
+
+1) Install [Heroku Toolbelt](https://devcenter.heroku.com/articles/heroku-cli) and sign in with `heroku login`
+2) Clone repo and `cd` in the repo folder
+3) `heroku create`
+4) `git push heroku master` (or `git push heroku heroku_support_example:master` to deploy the `heroku_support_example` branch)
+5) `heroku run rake db:migrate`
+6) `heroku run rake db:seed`
+7) `heroku open` :-)
+
 _Other notes_
 You can modify `docker/run.sh` and set `DO_NOT_PREPARE` to true, which will skip compiling the assets when the docker container loads. While this makes the container start faster, it is not reccommended because this is also the step where database migrations are run. If there's an update and the migrations don't run it could lead to issues with the website throwing a lot of errors.
 
