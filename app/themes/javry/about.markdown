@@ -1,0 +1,1 @@
+Javry knowledge base theme, based on Singular theme.
