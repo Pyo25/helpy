@@ -1,5 +1,8 @@
 <% title "#{AppSettings['settings.site_name']} #{@page_title}" %>
 
+<div class="row">
+<div class="col-md-10 col-md-offset-1">
+<%= content_tag :h3, t(:home_tagline) if params[:controller] == 'home' %>
 <% if knowledgebase? %>
   <div class="row">
     <% @categories.each do |category| %>
@@ -33,3 +36,5 @@
     <div class="col-md-1 col-sm-1"></div>
   </div>
 <% end %>
+</div>
+</div>

@@ -3,21 +3,23 @@
 <% meta_tag :keywords, "#{@category.keywords}" %>
 
 <div class="row">
-  <% @docs.each do |doc| %>
-    <%= render "docs/doc_panel", doc: doc %>
-  <% end %>
-  <% if @docs.count == 0 %>
+  <div class="col-md-10 col-md-offset-1">
+    <h3><%= @category.name %></h3>
+    <% @docs.each do |doc| %>
+      <%= render "docs/doc_panel", doc: doc %>
+    <% end %>
+    <% if @docs.count == 0 %>
 
-    <div class="text-center verticalness">
-      <%= t(:nothing_here) %>
-    </div>
+      <div class="text-center verticalness">
+        <%= t(:nothing_here) %>
+      </div>
 
-  <% end %>
+    <% end %>
 
-  <div class="row">
-    <div class="col-md-12 text-left">
-      <%= paginate @docs %>
+    <div class="row">
+      <div class="col-md-12 text-left">
+        <%= paginate @docs %>
+      </div>
     </div>
   </div>
-
 </div>

@@ -129,7 +129,7 @@
 			<div id="body-wrapper">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-10 col-md-offset-1">
+						<div class="col-md-12">
 							<% unless params[:controller] == 'home' %>
 								<span>
 									<style>
@@ -140,8 +140,6 @@
 						    </span>
 						    <%= yield :page_title %>
 							<% end %>
-							<%= content_tag :h3, t(:home_tagline) if params[:controller] == 'home' %>
-
 							<%= bootstrap_flash %>
 							<%= yield %>
 						</div>
