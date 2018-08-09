@@ -61,6 +61,7 @@ en:
   # Knowledgebase
   written_by: "Written By"
   last_edited: "Last Edited"
+  tagged: "Tagged"
   asked_before: "Has your question been answered before? We think these may be similar"
 
   # Tickets
@@ -126,6 +127,12 @@ en:
   internal_content: Internal Content
   new_ticket: New Ticket
   reports: Reports
+  helpcenter: "Helpcenter"
+  get_help: "Help"
+  report_bug: "Report Bug"
+  suggest_feature: "Suggest Feature"
+  shortcuts: "Keyboard Shortcuts"
+  sponsors: "Sponsors"
 
   # Admin main/statuses
   support_pipeline: Support Pipeline
@@ -165,6 +172,7 @@ en:
     one: "1 selected message"
     two: "2 selected messages"
     other: "%{count} selected messages"
+  users_history: "%{role}'s full history"
 
   # Discussion messages
   new_message: "This ticket has been marked new by the support staff"
@@ -193,6 +201,7 @@ en:
   scrub_user: "Anonymize User"
   anonymize_user_warning: "Are you sure you want to anonymize %{user_name}? This will permanently anonymize the user's personal data but retain all of their tickets and public posts."
   delete_user_warning: "Are you sure you want to delete %{user_name}? This will permanently remove the user and all of their tickets, posts, replies and forum topics."
+  click_to_edit: click to edit %{what}
 
   # Priorities
   select_priority: &priority Select Priority
@@ -529,9 +538,12 @@ en:
         cell_phone: Cell
         city: City
         state: State
+        zip: Zip
         signature: Signature
         title:
         time_zone:
+        street: Street
+        notes: Notes
       topic:
         kind: *kind
         name: *subject

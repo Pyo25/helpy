@@ -11,7 +11,7 @@ gem 'sass-rails', '~> 5.0.6'
 gem 'uglifier', '>= 1.3.0'
 
 # Explicitly include Nokogiri to control version
-gem 'nokogiri', '>= 1.8.1'
+gem 'nokogiri', '>= 1.8.4'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -150,7 +150,7 @@ gem 'timecop' #used to populate
 gem 'themes_on_rails'
 gem "recaptcha", require: "recaptcha/rails"
 
-gem 'best_in_place', '~> 3.0.1'
+gem 'best_in_place', '~> 3.1'
 
 # Add onboarding component
 gem 'helpy_onboarding', path: 'vendor/helpy_onboarding'
