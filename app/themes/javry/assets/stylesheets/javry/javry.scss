@@ -1028,6 +1028,10 @@ h5.category-header {
   a {
     color: #004084;
   }
+  p, ul, li, span {
+    text-align:justify;
+    line-height:26px;
+  }
   img {
     max-width: 90%;
     height: auto;
