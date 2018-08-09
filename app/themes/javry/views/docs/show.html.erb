@@ -24,7 +24,7 @@
     <div class="col-md-3 doc-panel doc-show-panel leftmenu">
       <strong><%= I18n.t("from_same_category", default: "From the same category") %></strong>
       <ul class="from-same-categories">
-        <% Category.includes(:docs).find(@doc.category_id).docs.each do |related_doc| %>
+        <% Category.includes(:docs).find(@doc.category_id).docs.with_translations(I18n.locale).each do |related_doc| %>
           <% if related_doc.id != @doc.id %>
             <li>
               <%= link_to related_doc.title, doc_path(related_doc) %>
