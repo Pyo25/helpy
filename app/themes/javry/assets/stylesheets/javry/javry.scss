@@ -1005,8 +1005,19 @@ h5.category-header {
 
 .text-content {
   h1 {
+    background-color: transparent;
+    font-size:38px;
     margin-top:0px;
     margin-bottom:5px;
+  }
+  h2 {
+    font-size:32px;
+  }
+  h3 {
+    font-size:26px;
+  }
+  h4 {
+    font-size:20px;
   }
   .subtitle {
     display:block;
