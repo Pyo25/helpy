@@ -43,6 +43,10 @@
               <%= @doc.user.name.titleize %>,
               <%= I18n.t("last_edited", default: "last update on") %>
               <%= last_active_time(@doc.updated_at) %>
+              <% if user_signed_in? && current_user.is_admin? %>
+                -
+                <%= link_to "Edit", edit_admin_category_doc_path(@doc.category.id, @doc.id, lang: I18n.locale) %>
+              <% end %>
             </span>
           <% end %>
 
