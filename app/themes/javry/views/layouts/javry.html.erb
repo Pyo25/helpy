@@ -136,7 +136,13 @@
 										ul.breadcrumb { background-color: transparent; }
 										#body-wrapper ul.breadcrumb li a { color: #666; }
 									</style>
-						      <%= render_breadcrumbs('') %>
+						      <%#= render_breadcrumbs('') %>
+						      <%#= Do not use the initial breadcrumbs because we don't want the "Knowledge base" link to appear
+									     because we are not using tickets, forums, etc. %>
+									<%= "#{link_to(t(:home, default: "Home"), root_path)} > ".html_safe %>
+									<% if @doc && @doc.category %>
+										<%= link_to(@doc.category.name, category_path(@doc.category)) %>
+									<% end %>
 						    </span>
 						    <%= yield :page_title %>
 							<% end %>
