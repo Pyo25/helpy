@@ -13,7 +13,7 @@
       <% if user_signed_in? %>
         <%= link_to(t(:logout), destroy_user_session_path) %>
       <% else %>
-        <%= link_to(t('devise.sessions.new.sign_in'), new_user_session_path, class: 'login-link') %>
+        <%#= link_to(t('devise.sessions.new.sign_in'), new_user_session_path, class: 'login-link') %>
       <% end %>
 		</div>
 	<div>
