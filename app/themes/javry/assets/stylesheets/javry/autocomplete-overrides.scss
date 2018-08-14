@@ -1,0 +1,23 @@
+.ui-autocomplete {
+  padding:0px;
+  margin:0px;
+  li.ui-menu-item {
+    margin:5px 5px;
+    padding:5px;
+    &:hover {
+      cursor:pointer;
+      background-color:#eee;
+    }
+    .ui-menu-item-heading {
+      font-weight:normal;
+      font-size:26px;
+    }
+
+    .ui-menu-item-content {
+      p {
+        margin-bottom:inherit;
+        font-size:18px;
+      }
+    }
+  }
+}
