@@ -71,8 +71,9 @@ gem 'grape-swagger'
 gem 'grape-entity'
 gem 'grape-swagger-rails'
 gem 'grape-swagger-entity'
-gem 'grape-attack'
+# gem 'grape-attack' #uncomment for rate limiting
 gem 'grape-kaminari'
+gem 'kaminari-grape'
 gem 'rack-cors', :require => 'rack/cors'
 
 gem 'permalink_fu'
@@ -110,7 +111,7 @@ gem 'bootstrap-datepicker-rails'
 gem 'bootstrap-select-rails'
 gem 'gemoji'
 
-gem 'config', '~> 1.1.0', git: 'https://github.com/railsconfig/config.git'
+gem 'config', '~> 1.1.0'
 
 # Email/Mail Handling
 gem 'daemons'
