@@ -412,6 +412,7 @@ GEM
     rack-cors (1.0.2)
     rack-test (0.6.3)
       rack (>= 1.0)
+    rack-timeout (0.5.1)
     rails (4.2.10)
       actionmailer (= 4.2.10)
       actionpack (= 4.2.10)
@@ -679,6 +680,7 @@ DEPENDENCIES
   pry-byebug
   puma
   rack-cors
+  rack-timeout
   rails (= 4.2.10)
   rails-i18n (~> 4.0.0)
   rails-settings-cached (~> 0.5)

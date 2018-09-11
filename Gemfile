@@ -201,6 +201,7 @@ end
 group :production do
   # Uncomment this gem for Heroku:
   gem 'rails_12factor'
+  gem "rack-timeout" # cfr https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server#timeout
   # gem 'unicorn'
   gem 'puma'
 end
