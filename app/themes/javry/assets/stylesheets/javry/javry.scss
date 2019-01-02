@@ -37,6 +37,10 @@ a {
 	color: $link-color;
 	text-decoration: none;
   overflow: hidden;
+  &:focus {
+    text-decoration:none;
+    color: $link-color-hover;
+  }
 
   &:hover {
     color: $link-color-hover;
