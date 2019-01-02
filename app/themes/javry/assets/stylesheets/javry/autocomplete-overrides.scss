@@ -1,6 +1,9 @@
 .ui-autocomplete {
   padding:0px;
   margin:0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
   li.ui-menu-item {
     margin:5px 5px;
     padding:5px;
@@ -10,13 +13,14 @@
     }
     .ui-menu-item-heading {
       font-weight:normal;
-      font-size:26px;
+      font-size:18px;
     }
 
     .ui-menu-item-content {
+      font-size:12px;
       p {
         margin-bottom:inherit;
-        font-size:18px;
+        font-size:12px;
       }
     }
   }
