@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  match "/fr/shop" => redirect("https://javry.com/fr/shop"), via: :get
 
   root to: "locales#redirect_on_locale"
 
