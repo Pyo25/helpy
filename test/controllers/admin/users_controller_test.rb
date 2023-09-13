@@ -78,11 +78,60 @@ class Admin::UsersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "an admin should see a message that a user was scheduled to be deleted" do
+    sign_in users(:admin)
+
+    user_name = User.find(3).name
+
+    delete :destroy, id: 3, locale: :en
+    assert_response :redirect
+    assert_equal "User #{user_name} was scheduled for permanent deletion.",
+      flash[:success]
+  end
+
+
   test "an admin should be able to anonymize a user" do
     sign_in users(:admin)
     xhr :post, :scrub, id: 3, locale: :en
     assert_response :success
     assert "Anonymous User", User.find(3).name
+  end
+
+  test "an admin should be able to add a new user without an invite" do
+    sign_in users(:admin)
+    get :new
+    assert_difference 'User.count', 1 do
+      assert_difference "ActionMailer::Base.deliveries.size", 0 do
+        post :create, {
+          user: {
+            name: 'some name',
+            email: 'some@email.test',
+            password: 'some_password',
+            role: 'agent'
+          },
+          locale: :en
+        }
+      end
+    end
+  end
+
+  test "an admin should be able to add a new user and send an invite" do
+    sign_in users(:admin)
+    get :new
+    assert_difference 'User.count', 1 do
+      assert_difference "ActionMailer::Base.deliveries.size", 1 do
+        post :create, {
+          user: {
+            name: 'some name',
+            email: 'some@email.test',
+            password: 'some_password',
+            role: 'agent'
+          },
+          locale: :en,
+          user_invite: true
+        }
+      end
+    end
   end
 
   # admin/agents
@@ -92,13 +141,13 @@ class Admin::UsersControllerTest < ActionController::TestCase
     test "an #{admin} should be able to see a listing of users" do
       sign_in users(admin.to_sym)
       get :index
-      assert_equal 9, assigns(:users).count
+      assert_equal User.all.count, assigns(:users).count
     end
 
     test "an #{admin} should be able to see a filtered of users" do
       sign_in users(admin.to_sym)
       get :index, { role: 'user' }
-      assert_equal 5, assigns(:users).count
+      assert_equal User.where(role: 'user').count, assigns(:users).count
     end
 
     test "an #{admin} should be able to update a user" do

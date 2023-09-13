@@ -89,12 +89,14 @@ Rails.application.routes.draw do
     patch 'topics/update_tags' => 'topics#update_tags', as: :update_topic_tags
     get 'topics/update_multiple' => 'topics#update_multiple_tickets', as: :update_multiple_tickets
     get 'topics/assign_agent' => 'topics#assign_agent', as: :assign_agent
+    get 'topics/unassign_agent' => 'topics#unassign_agent', as: :unassign_agent
     get 'topics/toggle_privacy' => 'topics#toggle_privacy', as: :toggle_privacy
     get 'topics/:id/toggle' => 'topics#toggle_post', as: :toggle_post
     get 'topics/assign_team' => 'topics#assign_team', as: :assign_team
     get 'topics/unassign_team' => 'topics#unassign_team', as: :unassign_team
     post 'topics/:topic_id/split/:post_id' => 'topics#split_topic', as: :split_topic
     get 'shortcuts' => 'topics#shortcuts', as: :shortcuts
+    get 'empty_trash' => 'topics#empty_trash', as: :empty_trash
 
     # SearchController Routes
     get 'search/topic_search' => 'search#topic_search', as: :topic_search
@@ -118,6 +120,7 @@ Rails.application.routes.draw do
     put 'settings/email' => 'settings#update_email', as: :update_email_settings
     put 'settings/integration' => 'settings#update_integration', as: :update_integration_settings
     get 'settings/profile' => 'settings#profile', as: :profile_settings
+    get 'settings/trash' => 'settings#trash', as: :trash_settings
 
     # Misc Routes
     post 'shared/update_order' => 'shared#update_order', as: :update_order
@@ -141,6 +144,7 @@ Rails.application.routes.draw do
 
     get 'internal_docs/search' => 'internal_categories#search', as: :internal_docs_search
 
+    patch 'categories/reorganize' => 'categories#reorganize', as: :reorganize
     resources :categories do
       resources :docs, except: [:index, :show]
     end
@@ -151,6 +155,7 @@ Rails.application.routes.draw do
     end
 
     resources :docs, except: [:index, :show]
+    get 'agent_assistant' => 'agent_assistant#index', as: :agent_assist
 
     resources :images, only: [:create, :destroy]
     resources :forums# , except: [:index, :show]
@@ -159,16 +164,20 @@ Rails.application.routes.draw do
     scope 'settings' do
       resources :api_keys, except: [:show, :edit, :update]
       resources :groups
+      resources :tags
     end
     resources :topics, except: [:delete, :edit] do
       resources :posts
     end
     resources :posts
+    
     get '/posts/:id/raw' => 'posts#raw', as: :post_raw
     get '/dashboard' => 'dashboard#index', as: :dashboard
     get '/reports/team' => 'reports#team', as: :team_reports
     get '/reports/groups' => 'reports#groups', as: :group_reports
     get '/reports' => 'reports#index', as: :reports
+
+    get '/dashboard/blank' => 'dashboard#blank', as: :blank_dashboard
 
     root to: 'dashboard#index'
   end

@@ -60,14 +60,8 @@ class DocsControllerTest < ActionController::TestCase
 
   test "a browsing user should not be able to see a doc page if KB features are not enabled" do
     AppSettings['settings.knowledgebase'] = "0"
-    assert_raises(ActionController::RoutingError) do
-      get :show, id: 1, locale: :en
-    end
-  end
-
-  test "a browsing user should be able to show a document when there isn't any forum" do
-    Forum.destroy_all
-    get :show, id: 1, locale: "en"
-    assert_response :success
+      get(:show, id: 1, locale: :en)
+      assert_response :redirect
+      assert_equal(response.redirect_url, root_url)
   end
 end

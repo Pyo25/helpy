@@ -26,12 +26,12 @@ class PostMailer < ActionMailer::Base
 
     email_with_name = %("#{@topic.user_name}" <#{@topic.user.email}>)
     @post.attachments.each do |att|
-      attachments[att.file.filename] = File.read(att.file.file)
+      attachments[att.file.filename] = ENV["REMOTE_STORAGE"]=="true" ? open(att.url).read : File.read(att.file.file)
     end
     mail(
       to: email_with_name,
       cc: @post.cc,
-      bcc: @post.bcc,
+      bcc: @post.bccs,
       from: @topic.from_email_address,
       subject: "[#{AppSettings['settings.site_name']}] ##{@topic.id}-#{@topic.name}"
       )

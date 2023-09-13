@@ -25,11 +25,14 @@ main {
   background-color: $body-bg;
 }
 
-input,
+input:not([type=radio]),
 select {
   min-height: 60px;
 }
 
+input#user_remember_me{
+  min-height: auto;
+}
 a {
 	color: $link-color;
 	text-decoration: none;
@@ -106,9 +109,6 @@ i.circle-icon {
 		font-size: 150%;
 	}
 
-  .article-block {
-  }
-
   i.circle-icon {
     display: inline-block;
     border-radius: 60px;
@@ -124,6 +124,11 @@ i.circle-icon {
 
   .article-icon {
     margin-bottom: 20px;
+  }
+
+  select,
+  input:not([type=radio]) {
+    min-height: 20px;
   }
 }
 
@@ -358,6 +363,7 @@ div.admin-tools {
   margin-left: 2px;
   margin-right: 2px;
   text-transform: uppercase;
+  display: inline-block;
 }
 
 // Tag background colors
@@ -752,9 +758,6 @@ header {
 .navbar-form {
   padding-top: 0;
   padding-bottom: 0;
-}
-
-.navbar-form .input-group .form-control {
 }
 
 .navbar-right {

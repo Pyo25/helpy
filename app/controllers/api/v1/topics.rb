@@ -15,8 +15,6 @@ module API
       # PRIVATE TICKET ENDPOINTS
       resource :tickets, desc: "Create and Manage private discussions" do
 
-        paginate per_page: 20
-
         # LIST BY STATUS
         desc "List all PRIVATE tickets by status", {
           entity: Entity::Topic,
@@ -70,7 +68,7 @@ module API
             topic = Topic.includes(:posts).find(permitted_params[:id])
           end
           if topic.present?
-            present topic, with: Entity::Topic, posts: true
+            present topic, with: Entity::Topic, posts: true, user: true
           else
             error!('Unauthorized. Insufficient access priviledges.', 401)
           end
@@ -92,6 +90,8 @@ module API
           optional :user_email, type: String, desc: "The user who is creating a ticket. Can be either registered or non-registered. Required if `user_id` not supplied."
           optional :user_name, type: String, desc: "The user name for register a non-registered user. Required if `user_id` is not supplied."
           optional :tag_list, type: String, desc: "A list of tags to apply to this ticket"
+          optional :cc, type: String, desc: "Comma separated list of emails to CC"
+          optional :bcc, type: String, desc: "Comma separated list of emails to BCC"
         end
 
         post "", root: :topics do
@@ -123,8 +123,10 @@ module API
             body: params[:body],
             user_id: user_id,
             kind: 'first',
+            cc: params[:cc],
+            bcc: params[:bcc]
           )
-          present ticket, with: Entity::Topic, posts: true
+          present ticket, with: Entity::Topic, posts: true, user: true
         end
 
         # ASSIGN TICKET
@@ -144,7 +146,7 @@ module API
             previous_assigned_id = ticket.assigned_user_id? ? ticket.assigned_user_id : params[:assigned_user_id]
             assigned_user = User.find(params[:assigned_user_id])
             ticket.assign(previous_assigned_id, assigned_user.id)
-            present ticket, with: Entity::Topic, posts: true
+            present ticket, with: Entity::Topic, posts: true, user: true
           else
             error!('Unauthorized. Insufficient access priviledges.', 401)
           end
@@ -175,7 +177,7 @@ module API
               ticket.current_status = params[:status]
               ticket.save
             end
-            present ticket, with: Entity::Topic, posts: true
+            present ticket, with: Entity::Topic, posts: true, user: true
           else
             error!('Unauthorized. Insufficient access priviledges.', 401)
           end
@@ -197,7 +199,7 @@ module API
           if ticket.present?
             ticket.tag_list = params[:tag_list]
             ticket.save
-            present ticket, with: Entity::Topic, posts: true
+            present ticket, with: Entity::Topic, posts: true, user: true
           else
             error!('Unauthorized. Insufficient access priviledges.', 401)
           end
@@ -221,7 +223,7 @@ module API
             ticket.private = is_private
             ticket.forum_id = params[:forum_id]
             ticket.save
-            present ticket, with: Entity::Topic, posts: true
+            present ticket, with: Entity::Topic, posts: true, user: true
           else
             error!('Unauthorized. Insufficient access priviledges.', 401)
           end
@@ -280,7 +282,7 @@ module API
         post "merge", root: :topics do
           @ticket = Topic.merge_topics(params[:topic_ids], params[:user_id])
           if @ticket.present?
-            present @ticket, with: Entity::Topic, posts: true
+            present @ticket, with: Entity::Topic, posts: true, user: true
           end
         end
       end
@@ -298,7 +300,7 @@ module API
         end
         get ":id", root: :topics do
           topic = Topic.includes(:posts).find(permitted_params[:id])#
-          present topic, with: Entity::Topic, posts: true
+          present topic, with: Entity::Topic, posts: true, user: true
         end
 
 
@@ -329,7 +331,7 @@ module API
             user_id: permitted_params[:user_id],
             kind: 'first'
           )
-          present topic, with: Entity::Topic, posts: true
+          present topic, with: Entity::Topic, posts: true, user: true
         end
 
         # UPDATE SINGLE TOPIC (PRIVACY, STATUS, ASSIGNED, ETC)
@@ -352,7 +354,7 @@ module API
             assigned_user_id: permitted_params[:assigned_user_id],
             priority: permitted_params[:priority] || 'normal'
           )
-          present topic, with: Entity::Topic, posts: true
+          present topic, with: Entity::Topic, posts: true, user: true
         end
 
         # VOTE FOR A TOPIC

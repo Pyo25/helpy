@@ -19,6 +19,10 @@
 			.flat-main-panel {
 				background-color:  <%= AppSettings['css.main_color'].blank? ? '#245566' : AppSettings['css.main_color'] %>;
 			}
+
+			.search-result-box .ui-menu .ui-menu-item a {
+			  color: #333 !important;
+			}
 		</style>
 		<%= css_injector %>
 		<%= "#{AppSettings['design.header_js']}".html_safe %>
@@ -170,6 +174,11 @@ $('#right-menu').sidr({
 // Close menu on click
 $('ul.nav').off().on('click', function(){
  $.sidr('close', 'nav');
+});
+
+// Close menu before navigating so turbolinks does not cache menu open
+$(document).on('page:before-change', function () {
+  $.sidr('close', 'nav');
 });
 </script>
 <%= "<script src='/assets/widget.v1.js'></script>".html_safe if AppSettings['widget.show_on_support_site'] == '1' %>
