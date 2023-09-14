@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "2.6.9"
+ruby "~> 2.6.0"
 gem 'rails', '4.2.11.1'
 
 # Use postgresql as the database for Active Record
