@@ -13,7 +13,10 @@
       </div>
     </div>
     <div class="row">
-      <%= link_to t('discover_javry.discover_how'), "https://javry.com?lang=#{I18n.locale}", class: 'btn btn-primary btn-lg' %>
+      <%
+        - url = I18n.locale == :fr ? "https://javry.com" : "https://javry.com/#{I18n.locale}"
+      %>
+      <%= link_to t('discover_javry.discover_how'), url, class: 'btn btn-primary btn-lg' %>
     </div>
   </div>
 </div>
