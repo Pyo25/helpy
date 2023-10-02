@@ -1,5 +1,8 @@
 <% title "#{AppSettings['settings.site_name']} #{@page_title}" %>
 <% content_for :canonical_url, root_url %>
+<% AppSettings['i18n.available_locales'].each do |lang| %>
+  <% content_for :"canonical_url_#{lang}", I18n.with_locale(lang) { root_url } %>
+<% end %>
 
 <div class="row">
 <div class="col-md-10 col-md-offset-1">
