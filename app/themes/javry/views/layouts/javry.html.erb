@@ -26,7 +26,10 @@
 	</script>
 
 	<% cache [params[:locale], current_user] do %>
-	<nav id="menu" class="hidden">
+	<%# The menu below is hidden using CSS, but it's never displayed. Let's remove it to improve SEO and internal linking %>
+	<%
+=begin%>
+ <nav id="menu" class="hidden">
 		<ul class="nav" data-hook="header-main-nav" >
 			<% if user_signed_in? %>
 			<%= content_tag :li, link_to(avatar_image(current_user, 40) + "  #{current_user.name.titleize}", edit_user_registration_path) %>
@@ -61,6 +64,8 @@
 			</li>
 		</ul>
 	</nav>
+<%
+=end%>
 	<% end %>
 
 	<main id="panel">
