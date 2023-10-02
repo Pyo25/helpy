@@ -31,7 +31,9 @@ class ResultController < ApplicationController
         serialized_result << {
           name: CGI::escapeHTML(result.searchable.title),
           content: result.searchable.meta_description.present? ? meta_content(result) : sanitized_content(result),
-          link: category_doc_path(result.searchable.category_id, Doc.find(result.searchable_id))
+          # SEO: use doc_path instead of category_doc_path to have only 1 URL per page (category_doc_path generates duplicate content)
+          # link: category_doc_path(result.searchable.category_id, Doc.find(result.searchable_id))
+          link: doc_path(Doc.find(result.searchable_id))
         }
       end
     end
