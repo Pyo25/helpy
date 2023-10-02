@@ -1,6 +1,7 @@
 <% title "#{@page_title} - #{AppSettings['settings.site_name']}" %>
 <% meta_tag :description, "#{@category.meta_description}" %>
 <% meta_tag :keywords, "#{@category.keywords}" %>
+<% content_for :canonical_url, category_url(@category) %>
 
 <div class="row">
   <div class="col-md-10 col-md-offset-1">

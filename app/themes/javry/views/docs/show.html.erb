@@ -2,6 +2,7 @@
 <% title renderize_doc_title(@doc.title_tag, @doc.title) %>
 <% meta_tag :description, "#{@doc.meta_description}" %>
 <% meta_tag :keywords, "#{@doc.keywords}" %>
+<% content_for :canonical_url, doc_url(@doc) %>
 
 <script>
   Helpy.yesHelped = '<%= j t(:yes_helped) %>';
