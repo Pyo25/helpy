@@ -37,6 +37,7 @@ class DocsController < ApplicationController
     # SEO improvement: we don't want 2 pages with same content to have different urls
     #   It is currently the case with category_doc_path and doc_path routes
     redirect_if_category_doc_url; return if performed?
+    redirect_if_wrong_canonical_path; return if performed?
     define_topic_for_doc
     define_forum_for_docs
     generate_page_breadcumbs
@@ -82,6 +83,12 @@ class DocsController < ApplicationController
   def redirect_if_category_doc_url
     if params[:category_id].present? && params[:id].present?
       redirect_to doc_path(params[:id]), status: :moved_permanently and return
+    end
+  end
+
+  def redirect_if_wrong_canonical_path
+    if request.path != doc_path(@doc)
+      redirect_to doc_path(@doc), status: :moved_permanently and return
     end
   end
 end
