@@ -198,6 +198,7 @@ $('ul.nav').off().on('click', function(){
 <%= "<script src='/assets/widget.v1.js'></script>".html_safe if AppSettings['widget.show_on_support_site'] == '1' %>
 <%= "#{AppSettings['design.footer_js']}".html_safe %>
 
+<%= render partial: 'layouts/obfuscation' %>
 <%= render partial: 'layouts/tawkto' %>
 </body>
 </html>
