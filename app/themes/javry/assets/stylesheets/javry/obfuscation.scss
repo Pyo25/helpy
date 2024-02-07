@@ -1,0 +1,6 @@
+.lnkobf {
+  cursor:pointer;
+  &:focus, &:focus-visible {
+    outline:0;
+  }
+}

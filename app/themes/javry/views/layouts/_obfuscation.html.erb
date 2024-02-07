@@ -1,0 +1,13 @@
+<script>
+  (function () {
+    $(".lnkobf").click(function () {
+      var attribute = $(this).data("target");
+      var target = $(this).attr("target");
+      if (target == "_blank") {
+        window.open(decodeURIComponent(window.atob(attribute)), "_blank");
+      } else {
+        document.location.href = decodeURIComponent(window.atob(attribute));
+      }
+    });
+  })();
+</script>
