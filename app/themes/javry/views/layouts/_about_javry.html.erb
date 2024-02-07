@@ -16,7 +16,7 @@
       <%
         - url = I18n.locale == :fr ? "https://javry.com" : "https://javry.com/#{I18n.locale}"
       %>
-      <%= link_to t('discover_javry.discover_how'), url, class: 'btn btn-primary btn-lg' %>
+      <%= obfuscated_link_to t('discover_javry.discover_how'), url, class: 'btn btn-primary btn-lg' %>
     </div>
   </div>
 </div>

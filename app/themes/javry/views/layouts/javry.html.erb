@@ -86,11 +86,11 @@
 									<ul class="list-inline" data-hook="header-mini-nav">
 										<%# Do not allow opening new ticket for now %>
 										<%# <%= content_tag :li, link_to(t(:ask_a_question), new_topic_path), data: { hook: 'question_nav' }, class: 'hidden-xs'  if forums? || tickets? %>
-										<%= content_tag :li, link_to(t(:ask_a_question), "https://javry.com/contactus", target: "_blank"), data: { hook: 'question_nav' }, class: 'hidden-xs' %>
+										<%= content_tag :li, obfuscated_link_to(t(:ask_a_question), "https://javry.com/#{I18n.locale}/contactus", target: "_blank"), data: { hook: 'question_nav' }, class: 'hidden-xs' %>
 
 										<%# Do not show the menu button, we don't need it so far %>
 										<%# <li data-no-turbolink><a href="#right-menu" id="right-menu"><h2 class="fas fa-bars"></h2></a></li> %>
-										<%= content_tag :li, link_to("#{t(:back_to)} #{AppSettings['settings.parent_company']}", AppSettings['settings.parent_site'],  target: "_blank"), class: 'hidden-xs' %>
+										<%= content_tag :li, obfuscated_link_to("#{t(:back_to)} #{AppSettings['settings.parent_company']}", AppSettings['settings.parent_site'],  target: "_blank"), class: 'hidden-xs' %>
 
 										<li class="dropdown language-picker">
 											<a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="#" role="button">
