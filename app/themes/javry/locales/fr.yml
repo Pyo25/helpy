@@ -1,7 +1,7 @@
 fr:
   home_tagline: Comment pouvons-nous vous aider ?
   # footer
-  javry: "Javry, <a href=\"https://javry.com\">café pour entreprise</a>"
+  javry: "Javry, <a href=\"https://javry.com/fr/pro\">café pour entreprise</a>"
   powered_by: "Propulsée par %{link}"
   # javry-specific
   discover_javry:
