@@ -1,5 +1,41 @@
 <div id="footer" class="row">
-	<div class="row">
+  <% if I18n.locale == :fr %>
+  <div class="row">
+		<div class="col-md-4 col-xs-12 text-left">
+      <div class="h4 mb-3 mt-3">Nos services professionnels</div>
+      <ul class="list-unstyled">
+        <li><a href="https://javry.com/fr/pro">Fournisseur de café pour entreprise</a></li>
+        <li><a href="https://javry.com/fr/pro/tpe">Solution café pour indépendant ou TPE</a></li>
+        <li><a href="https://javry.com/fr/pro/multisite">Solution café multi-sites pour grande entreprise</a></li>
+        <li><a href="https://javry.com/fr/pro/maintenance">Maintenance de machine à café professionnelle</a></li>
+      </ul>
+
+        <!--
+        Livraison automatique de café
+        Location de machine à Bruxelles
+        Location de machine à Liège
+        -->
+    </div>
+    <div class="col-md-4 col-xs-12 text-left">
+      <div class="h4 mb-3 mt-3">Nos équipements professionnelles</div>
+      <ul class="list-unstyled">
+        <li><a href="https://javry.com/fr/pro/machines">Machines à café à grain pour entreprise</a></li>
+        <li><a href="https://javry.com/fr/pro/machines/jura">Machines Jura pour entreprise</a></li>
+        <li><a href="https://javry.com/fr/pro/machines/machines-a-cafe-et-chocolat">Machines à café et chocolat professionnelles</a></li>
+        <li><a href="https://javry.com/fr/pro/machines/vending">Distributeurs de boissons chaudes</a></li>
+        <li><a href="https://javry.com/fr/shop/category/fontaine-a-eau">Fontaines à eau pour bureau</a></li>
+      </ul>
+    </div>
+    <div class="col-md-4 col-xs-12 text-left">
+      <div class="h4 mb-3 mt-3">Nos guides</div>
+      <ul class="list-unstyled">
+        <li><a href="https://javry.com/fr/guides/choisir-machine-a-cafe-entreprise">Comment choisir sa machine à café d'entreprise</a></li>
+        <li><a href="https://javry.com/fr/guides/la-pause-cafe-en-entreprise">Le guide de la pause café au bureau</a></li>
+      </ul>
+    </div>
+  </div>
+ <% else %>
+ <div class="row">
 		<div class="col-md-6 col-sm-8 col-xs-12 text-left">
       <%= t(:javry).html_safe %>
       <br />
@@ -14,6 +50,7 @@
       <% end %>
 		</div>
 	<div>
+  <% end %>
 </div>
 
 <%
