@@ -8,7 +8,10 @@
 
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
-    <h1 class="h3"><%= @category.name %></h1>
+    <h1 class="h3">
+      <%= @category.name %>
+      <%= params[:page].present? ? " - Page #{params[:page]}" : nil %>
+    </h1>
     <% @docs.each do |doc| %>
       <%= render "docs/doc_panel", doc: doc %>
     <% end %>
