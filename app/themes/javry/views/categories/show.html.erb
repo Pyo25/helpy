@@ -1,5 +1,5 @@
-<% title "#{@page_title} - #{AppSettings['settings.site_name']}" %>
-<% meta_tag :description, "#{@category.meta_description}" %>
+<% title "#{@page_title} - #{AppSettings['settings.site_name']}#{params[:page].present? ? " - Page #{params[:page]}" : nil}" %>
+<% meta_tag :description, "#{@category.meta_description}#{params[:page].present? ? " - Page #{params[:page]}" : nil}" %>
 <% meta_tag :keywords, "#{@category.keywords}" %>
 <% content_for :canonical_url, category_url(@category, page: params[:page].present? ? params[:page] : nil) %>
 <% AppSettings['i18n.available_locales'].each do |lang| %>
