@@ -6,7 +6,7 @@
 
 <div class="row">
 <div class="col-md-10 col-md-offset-1">
-<%= content_tag :h3, t(:home_tagline) if params[:controller] == 'home' %>
+<%= content_tag :h1, t(:home_tagline), class: "h3" if params[:controller] == 'home' %>
 <% if knowledgebase? %>
   <div class="row">
     <% @categories.each do |category| %>
